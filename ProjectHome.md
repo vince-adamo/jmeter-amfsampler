@@ -1,0 +1,5 @@
+This sampler provides support for serializing and deserializing AMF messages sent to/from a remote server.  Serialized AMF messages are sent to the remote server as an HTTP POST method request entity and the Http response body received from the remote server is deserialized and processed.
+
+This sampler extends HTTPSampler2, taking advantage of that samplers use of the Apache Commons HTTPClient and associated built-in support for cookie management (via the HTTP Cookie Manager). This was found to be necessary when working with certain load balancers and sticky session handling via cookies, which tend to favor the behavior of the Apache Commons HTTPClient over the default Java implementation used within, for example, flex.messaging.io.amf.client.AMFConnection.
+
+This sampler also borrows from the AbstractJavaSamplerClient concept, supporting custom pre/post-processing implementations based on user-supplied extensions of the AmfCommandMessage and AmfRemotingMessage classes provided with this sampler.
